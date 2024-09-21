@@ -160,7 +160,9 @@ const toDoApp = () => {
    * @param {string} keyword - The keyword to search for.
    * @returns {Task[]} An array of tasks that contain the keyword in their title or description.
    */
-  const searchTasks = () => {};
+  const searchTasks = (keyword) => {
+    return tasks.filter((taskItem) => taskItem.title.includes(keyword));
+  };
 
   /**
    * Updates the `updatedAt` field of a task when it is modified.
