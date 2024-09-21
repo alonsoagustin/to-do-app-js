@@ -169,7 +169,14 @@ const toDoApp = () => {
    * @param {number} id - The unique ID of the task to update.
    * @returns {void}
    */
-  const updateTaskDate = (id) => {};
+  const updateTaskDate = (id) => {
+    let task = findTaskById(id);
+    task = {
+      ...task,
+      updatedAt: new Date(),
+    };
+    tasks = tasks.map((taskItem) => (taskItem.id === id ? task : taskItem));
+  };
 
   /**
    * Edits an existing task by its ID.
