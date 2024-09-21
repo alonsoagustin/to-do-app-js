@@ -128,7 +128,11 @@ const toDoApp = () => {
    * @param {number} id - The unique ID of the task to find.
    * @returns {Task} The task object if found
    */
-  const findTaskById = () => {};
+  const findTaskById = (id) => {
+    const task = tasks.find((taskItem) => taskItem.id === id);
+    if (!task) throw new Error("No existe una tarea con ese ID");
+    return task;
+  };
 
   /**
    * Filters tasks by their completion status.
