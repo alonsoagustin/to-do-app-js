@@ -142,7 +142,9 @@ const toDoApp = () => {
    * @param {boolean} isCompleted - If true, returns completed tasks; otherwise, returns incomplete tasks.
    * @returns {Task[]} An array of tasks that match the completion status.
    */
-  const filterByCompleted = () => {};
+  const filterByCompleted = (isCompleted) => {
+    return tasks.filter((taskItem) => taskItem.completed === isCompleted);
+  };
 
   /**
    * Filters tasks by their priority.
