@@ -97,7 +97,9 @@ const toDoApp = () => {
    * @param {Object} task - The task object to be added.
    * @returns {void}
    */
-  const addTask = (task) => {};
+  const addTask = (task) => {
+    tasks = [...tasks, task];
+  };
 
   /**
    * Lists all tasks in the console.
