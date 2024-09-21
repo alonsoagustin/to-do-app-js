@@ -121,7 +121,10 @@ const toDoApp = () => {
    * @throws {Error} If the task is not found
    * @returns {void}
    */
-  const removeTask = () => {};
+  const removeTask = (id) => {
+    const task = findTaskById(id);
+    tasks = tasks.filter((taskItem) => taskItem.id !== id);
+  };
 
   /**
    * Finds a task by its unique ID.
