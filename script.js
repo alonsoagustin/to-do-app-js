@@ -42,14 +42,16 @@ const toDoApp = () => {
    * @type {number}
    * @default 111000
    */
-  let currentId;
+  let currentId = 111000;
 
   /**
    * Generates a unique incremental ID.
    * Each call to this function increments the ID by 1.
    * @returns {number} A unique incremental ID.
    */
-  const generatelId = () => {};
+  const generatelId = () => {
+    return currentId++;
+  };
 
   /**
    * Creates a new task object.
