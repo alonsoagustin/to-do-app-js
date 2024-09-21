@@ -151,7 +151,9 @@ const toDoApp = () => {
    * @param {string} priority - The priority level to filter by ('low', 'medium', 'high').
    * @returns {Task[]} An array of tasks that match the specified priority.
    */
-  const filterByPriority = () => {};
+  const filterByPriority = (priority) => {
+    return tasks.filter((taskItem) => taskItem.priority === priority);
+  };
 
   /**
    * Searches tasks by a keyword in their title or description.
