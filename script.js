@@ -66,7 +66,31 @@ const toDoApp = () => {
    * @param {string} [assignedTo=''] - The person assigned to the task.
    * @returns {Object} The new task object.
    */
-  const createTask = () => {};
+  const createTask = (
+    title,
+    completed = false,
+    dueDate = "",
+    priority = "low",
+    description = "",
+    createdAt = new Date(),
+    updatedAt = "",
+    tags = [],
+    assignedTo = ""
+  ) => {
+    const id = generatelId();
+    return {
+      id,
+      title,
+      completed,
+      dueDate,
+      priority,
+      description,
+      createdAt,
+      updatedAt,
+      tags,
+      assignedTo,
+    };
+  };
 
   /**
    * Adds a new task object to the tasks array.
