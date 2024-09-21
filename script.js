@@ -113,7 +113,12 @@ const toDoApp = () => {
    * @throws {Error} If the task is not found
    * @returns {void}
    */
-  const markCompleted = () => {};
+  const markCompleted = (id) => {
+    let task = findTaskById(id);
+    task = { ...task, completed: true };
+    tasks = tasks.map((taskItem) => (taskItem.id === id ? task : taskItem));
+    updateTaskDate(id);
+  };
 
   /**
    * Removes a task from the list.
