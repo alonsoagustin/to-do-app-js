@@ -195,7 +195,14 @@ const toDoApp = () => {
    * @param {string} [updates.assignedTo] - The new person assigned to the task (optional).
    * @returns {void}
    */
-  const editTask = () => {};
+  const editTask = (id, object) => {
+    const task = findTaskById(id);
+    const updateTask = { ...task, ...object };
+    tasks = tasks.map((taskItem) =>
+      taskItem.id === id ? updateTask : taskItem
+    );
+    updateTaskDate(id);
+  };
 
   return {
     editTask,
