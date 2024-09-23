@@ -102,10 +102,12 @@ const toDoApp = () => {
   };
 
   /**
-   * Lists all tasks in the console.
-   * @returns {void}
+   * Lists all tasks.
+   * @returns {Array} An array of all tasks.
    */
-  const listTasks = () => {};
+  const getAllTasks = () => {
+    return tasks;
+  };
 
   /**
    * Marks a task as completed.
@@ -213,7 +215,7 @@ const toDoApp = () => {
     findTaskById,
     removeTask,
     markCompleted,
-    listTasks,
+    getAllTasks,
     addTask,
     createTask,
   };
