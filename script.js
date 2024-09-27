@@ -28,7 +28,7 @@
  * }
  */
 
-const toDoApp = () => {
+export const toDoApp = () => {
   /**
    * Array that stores task objects.
    * Each element is an object of type Task.
@@ -220,4 +220,3 @@ const toDoApp = () => {
     createTask,
   };
 };
-export default toDoApp;
