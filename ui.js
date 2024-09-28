@@ -7,6 +7,7 @@ const searchInput = document.getElementById("search");
 const taskList = document.getElementById("task-list");
 const allBtn = document.getElementById("all");
 const pendingBtn = document.getElementById("pending");
+const completedBtn = document.getElementById("completed");
 
 const createTask = (event) => {
   event.preventDefault();
@@ -140,9 +141,28 @@ const displayPendingTask = () => {
   }
 };
 
+const displayCompletedTask = () => {
+  completedBtn.classList.toggle("active");
+
+  if (pendingBtn.classList.contains("active")) {
+    pendingBtn.classList.toggle("active");
+  } else if (allBtn.classList.contains("active")) {
+    allBtn.classList.toggle("active");
+  }
+
+  const completedTasks = taskManager.filterByCompleted(true);
+  taskList.innerHTML = "";
+  if (completedTasks.length > 0) {
+    for (const task of completedTasks) {
+      displayTask(task);
+    }
+  }
+};
+
 formNewTask.addEventListener("submit", createTask);
 searchInput.addEventListener("input", searchTask);
 taskList.addEventListener("click", deleteTask);
 taskList.addEventListener("click", taskCompleted);
 allBtn.addEventListener("click", displayAllTask);
 pendingBtn.addEventListener("click", displayPendingTask);
+completedBtn.addEventListener("click", displayCompletedTask);
