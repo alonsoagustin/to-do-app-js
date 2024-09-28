@@ -151,19 +151,24 @@
             <form id="new-task">
               <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" id="title" />
+                <input type="text" required class="form-control" id="title" />
               </div>
               <div class="mb-3">
                 <label for="dueDate" class="form-label">Due date</label>
-                <input type="date" class="form-control" id="dueDate" />
+                <input type="date" required class="form-control" id="dueDate" />
               </div>
               <div class="mb-3">
                 <label for="category" class="form-label">Category</label>
-                <input type="text" class="form-control" id="category" />
+                <input
+                  type="text"
+                  required
+                  class="form-control"
+                  id="category"
+                />
               </div>
               <div class="mb-3">
                 <label for="priority" class="form-label">Priority</label>
-                <select class="form-select" id="priority">
+                <select class="form-select" id="priority" required>
                   <option selected>--</option>
                   <option value="Low">Low</option>
                   <option value="Medium">Medium</option>
