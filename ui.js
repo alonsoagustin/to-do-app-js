@@ -4,6 +4,7 @@ const taskManager = toDoApp();
 
 const formNewTask = document.getElementById("new-task");
 const searchInput = document.getElementById("search");
+const taskList = document.getElementById("task-list");
 
 const createTask = (event) => {
   event.preventDefault();
@@ -81,5 +82,17 @@ const searchTask = () => {
   }
 };
 
+const deleteTask = (event) => {
+  // Verificamos si el clic provino de un elemento con la clase "delete"
+  if (event.target.closest(".delete")) {
+    // Buscamos el elemento más cercano con la clase "card"
+    const taskElement = event.target.closest(".card");
+    const taskId = +taskElement.dataset.id; // Conseguimos el id desde el atributo
+    taskManager.removeTask(taskId);
+    taskElement.remove();
+  }
+};
+
 formNewTask.addEventListener("submit", createTask);
 searchInput.addEventListener("input", searchTask);
+taskList.addEventListener("click", deleteTask);
