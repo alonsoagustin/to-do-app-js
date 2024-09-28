@@ -3,6 +3,7 @@ import { toDoApp } from "./script.js";
 const taskManager = toDoApp();
 
 const formNewTask = document.getElementById("new-task");
+const searchInput = document.getElementById("search");
 
 const createTask = (event) => {
   event.preventDefault();
@@ -71,4 +72,14 @@ const displayTasks = (task) => {
   taskList.appendChild(taskElement);
 };
 
+const searchTask = () => {
+  const input = searchInput.value.toLowerCase();
+  const tasks = taskManager.searchTasks(input);
+  taskList.innerHTML = "";
+  for (const task of tasks) {
+    displayTasks(task);
+  }
+};
+
 formNewTask.addEventListener("submit", createTask);
+searchInput.addEventListener("input", searchTask);
