@@ -22,7 +22,7 @@ ToDoApp es una aplicación web diseñada para ayudar a los usuarios a crear, ges
 
 1. Clona este repositorio:
    ```bash
-   git clone https://github.com/usuario/todoapp.git
+   git clone https://github.com/alonsoagustin/to-do-app-js.git
    ```
 2. Navega a la carpeta del proyecto:
    ```bash
