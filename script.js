@@ -177,12 +177,14 @@ export const toDoApp = () => {
   };
 
   /**
-   * Searches tasks by a keyword in their title or description.
+   * Searches tasks by a keyword in their title.
    * @param {string} keyword - The keyword to search for.
-   * @returns {Task[]} An array of tasks that contain the keyword in their title or description.
+   * @returns {Task[]} An array of tasks that contain the keyword in their title.
    */
   const searchTasks = (keyword) => {
-    return tasks.filter((taskItem) => taskItem.title.includes(keyword));
+    return tasks.filter((taskItem) =>
+      taskItem.title.toLowerCase().includes(keyword)
+    );
   };
 
   /**
