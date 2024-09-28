@@ -5,6 +5,7 @@ const taskManager = toDoApp();
 const formNewTask = document.getElementById("new-task");
 const searchInput = document.getElementById("search");
 const taskList = document.getElementById("task-list");
+const allBtn = document.getElementById("all");
 
 const createTask = (event) => {
   event.preventDefault();
@@ -104,7 +105,25 @@ const taskCompleted = (event) => {
   }
 };
 
+const displayAllTask = () => {
+  allBtn.classList.toggle("active");
+  if (pendingBtn.classList.contains("active")) {
+    pendingBtn.classList.toggle("active");
+  } else if (completedBtn.classList.contains("active")) {
+    completedBtn.classList.toggle("active");
+  }
+
+  const allTasks = taskManager.getAllTasks();
+  if (allTasks.length > 0) {
+    taskList.innerHTML = "";
+    for (const task of allTasks) {
+      displayTask(task);
+    }
+  }
+};
+
 formNewTask.addEventListener("submit", createTask);
 searchInput.addEventListener("input", searchTask);
 taskList.addEventListener("click", deleteTask);
 taskList.addEventListener("click", taskCompleted);
+allBtn.addEventListener("click", displayAllTask);
