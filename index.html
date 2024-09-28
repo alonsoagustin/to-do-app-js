@@ -103,6 +103,8 @@
           <li class="nav-item">
             <a
               class="nav-link"
+              data-bs-toggle="modal"
+              data-bs-target="#create-new-task"
               onmouseover="this.style.backgroundColor='rgba(255, 255, 255, 0.2)'; this.style.color='#ffffff';"
               onmouseout="this.style.backgroundColor=''; this.style.color='';"
               href="#"
@@ -123,6 +125,63 @@
         </ul>
       </nav>
     </aside>
+
+    <!-- modal - create new task -->
+    <div
+      class="modal fade"
+      id="create-new-task"
+      tabindex="-1"
+      aria-labelledby="create-new-task-modal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="create-new-task-modal">
+              New Task
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="new-task">
+              <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" />
+              </div>
+              <div class="mb-3">
+                <label for="dueDate" class="form-label">Due date</label>
+                <input type="date" class="form-control" id="dueDate" />
+              </div>
+              <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <input type="text" class="form-control" id="category" />
+              </div>
+              <div class="mb-3">
+                <label for="priority" class="form-label">Priority</label>
+                <select class="form-select" id="priority">
+                  <option selected>--</option>
+                  <option value="Low">Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option>
+                </select>
+              </div>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                style="float: right"
+              >
+                Create
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- main -->
     <main class="bg-white">
