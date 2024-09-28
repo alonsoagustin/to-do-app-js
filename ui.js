@@ -15,10 +15,10 @@ const createTask = (event) => {
   const newTask = taskManager.createTask(title, dueDate, priority, category);
   taskManager.addTask(newTask);
   formNewTask.reset();
-  displayTasks(newTask);
+  displayTask(newTask);
 };
 
-const displayTasks = (task) => {
+const displayTask = (task) => {
   const taskElement = document.createElement("article");
   let priorityClass = "text-bg-secondary";
 
@@ -78,7 +78,7 @@ const searchTask = () => {
   const tasks = taskManager.searchTasks(input);
   taskList.innerHTML = "";
   for (const task of tasks) {
-    displayTasks(task);
+    displayTask(task);
   }
 };
 
@@ -93,6 +93,18 @@ const deleteTask = (event) => {
   }
 };
 
+const taskCompleted = (event) => {
+  // Verificamos si el clic provino de un elemento con la clase "done"
+  if (event.target.closest(".done")) {
+    // Buscamos el elemento más cercano con la clase "card"
+    const taskElement = event.target.closest(".card");
+    const taskId = +taskElement.dataset.id; // Conseguimos el id desde el atributo
+    taskManager.markCompleted(taskId);
+    taskElement.remove();
+  }
+};
+
 formNewTask.addEventListener("submit", createTask);
 searchInput.addEventListener("input", searchTask);
 taskList.addEventListener("click", deleteTask);
+taskList.addEventListener("click", taskCompleted);
