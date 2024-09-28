@@ -2,13 +2,13 @@
  * @typedef {Object} Task
  * @property {number} id - The unique ID of the task.
  * @property {string} title - The title of the task.
+ * @property {string} dueDate - The due date of the task.
+ * @property {string} priority - The priority of the task
+ * @property {string} category - The category of the task
  * @property {boolean} completed - Indicates if the task is completed.
- * @property {string} dueDate - The due date of the task (e.g., 'YYYY-MM-DD').
- * @property {string} priority - The priority of the task (e.g., 'low', 'medium', 'high').
  * @property {string} description - A detailed description of the task.
  * @property {Date} createdAt - The date and time the task was created.
  * @property {Date} updatedAt - The date and time the task was last updated.
- * @property {string[]} tags - An array of tags related to the task.
  * @property {string} assignedTo - The person assigned to the task.
  */
 
@@ -16,14 +16,14 @@
  * Example:
  * task = {
  * id: 111001,
- * title:'Finish JavaScript project',
+ * title:'Create Wireframes review',
+ * dueDate: '20 Mar 2023',
+ * priority: 'Medium',
+ * category: 'Design',
  * completed: false,
- * dueDate: '2024-09-30',
- * priority: 'high',
- * description: 'Complete the project and submit it for review.',
+ * description: 'Review wireframes to ensure they meet project requirements',
  * createdAt: new Date('2024-09-20T10:00:00'),
  * updatedAt: new Date('2024-09-20T10:00:00'),
- * tags: ['JavaScript', 'Project', 'Urgent'],
  * assignedTo: 'John Doe'
  * }
  */
@@ -55,39 +55,53 @@ export const toDoApp = () => {
 
   /**
    * Creates a new task object.
-   * @param {string} title - The title of the task.
-   * @param {boolean} [completed=false] - Indicates if the task is completed.
-   * @param {string} [dueDate=''] - The due date for the task.
-   * @param {string} [priority='low'] - The priority of the task.
-   * @param {string} [description=''] - A detailed description of the task.
-   * @param {Date} [createdAt=new Date()] - The date the task was created.
-   * @param {Date} [updatedAt=''] - The date the task was last updated.
-   * @param {string[]} [tags=[]] - An array of tags for the task.
-   * @param {string} [assignedTo=''] - The person assigned to the task.
+   * @property {number} id - The unique ID of the task.
+   * @property {string} title - The title of the task.
+   * @property {string} dueDate - The due date of the task.
+   * @property {string} priority - The priority of the task
+   * @property {string} category - The category of the task
+   * @property {boolean} completed - Indicates if the task is completed.
+   * @property {string} description - A detailed description of the task.
+   * @property {Date} createdAt - The date and time the task was created.
+   * @property {Date} updatedAt - The date and time the task was last updated.
+   * @property {string} assignedTo - The person assigned to the task.
    * @returns {Object} The new task object.
    */
   const createTask = (
     title,
-    completed = false,
     dueDate = "",
     priority = "low",
+    category = "",
+    completed = false,
     description = "",
     createdAt = new Date(),
     updatedAt = "",
-    tags = [],
     assignedTo = ""
   ) => {
     const id = generatelId();
+
+    createdAt = createdAt.toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+
+    dueDate = dueDate.toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+
     return {
       id,
       title,
-      completed,
       dueDate,
       priority,
+      category,
+      completed,
       description,
       createdAt,
       updatedAt,
-      tags,
       assignedTo,
     };
   };
